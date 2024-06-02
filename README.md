@@ -49,9 +49,9 @@ npm install
 
 Export environment variables through terninals
 ```
-    * export SECRET="My Shared Secret"
-    * export MAX_TIME_DIFFERENCE=60
-    * export PORT=3000
+export SECRET="My Shared Secret"
+export MAX_TIME_DIFFERENCE=60
+export PORT=3000
 ```
 Or rename the `/env.example` to `.env` update the values file for your environment
 ```
