@@ -1,11 +1,27 @@
 {
   "name": "secure-webhook",
   "version": "1.0.0",
-  "description": "",
+  "description": "A Node.js application for implementing secure webhooks",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC"
+  "author": {
+    "name": "Faizan Ahmad",
+    "email": "faizan.ahmad.info@gmail.com"
+  },
+  "license": "ISC",
+  "homepage": "https://github.com/faizanah/secure-webhook",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/faizanah/secure-webhook.git"
+  },
+  "bugs": {
+    "url": "https://github.com/faizanah/secure-webhook/issues"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.19.2"
+  }
 }
