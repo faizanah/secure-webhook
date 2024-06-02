@@ -2,7 +2,7 @@
 
 
 <p align="center">
-  <img src="./banner.png" alt="Implementing Secure Webhooks using node.js" width="900" height="350" />
+  <img src="./banner.png" alt="Implementing Secure Webhooks using node.js" width="1000" height="400" />
 </p>
 
 <h1 align="center"Implementing Secure Webhooks using node.js</h1>
