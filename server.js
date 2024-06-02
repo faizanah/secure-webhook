@@ -1,12 +1,14 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const crypto = require('crypto');
 require('dotenv').config();
+const crypto = require('crypto');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-const SECRET = process.env.SECRET || 'your_shared_secret'; // ENTER YOUR SHARED SECRET HERE
+const WEBHOOK_TOKEN = process.env.WEBHOOK_TOKEN;
+
+const SECRET = process.env.SECRET;
 const MAX_TIME_DIFFERENCE = +process.env.MAX_TIME_DIFFERENCE || 60;
 
 // Middleware to parse incoming JSON requests
@@ -19,12 +21,19 @@ const verifySignature = (secret, payload, signature) => {
     return crypto.timingSafeEqual(Buffer.from(digest, 'utf-8'), Buffer.from(signature, 'utf-8'));
 };
 
-// Middleware to verify the signature and timestamp of incoming webhook requests
-const verifySignatureMiddleware = (secret, timeDifference) => {
+// Middleware to verify the webhook tooken, signature and timestamp of incoming webhook requests
+const verifyWebhookMiddleware = (webhookToken, secret, timeDifference) => {
     return (req, res, next) => {
+        console.log('Headers:', req.headers);
+        const token = req.headers['x-webhook-token'];
         const signature = req.headers['x-signature'];
         const timestamp = req.headers['x-timestamp'];
         const payload = req.body;
+
+        // Check if webhook teken headers is missing or invalid
+        if (!token || token !== webhookToken) {
+            return res.status(401).json({ error: 'Unauthorized' });
+        }
 
         // Check if signature or timestamp headers are missing
         if (!signature || !timestamp) {
@@ -51,8 +60,9 @@ const verifySignatureMiddleware = (secret, timeDifference) => {
     };
 };
 
+
 // Endpoint to receive webhook payloads
-app.post('/webhook', verifySignatureMiddleware(SECRET, MAX_TIME_DIFFERENCE), (req, res) => {
+app.post('/webhook', verifyWebhookMiddleware(WEBHOOK_TOKEN, SECRET, MAX_TIME_DIFFERENCE), (req, res) => {
     console.log('Received webhook payload:', req.body);
     const { event, data } = req.body;
 
@@ -61,7 +71,6 @@ app.post('/webhook', verifySignatureMiddleware(SECRET, MAX_TIME_DIFFERENCE), (re
         console.log(`New user created: ${data.id}`);
         // Add your logic here to handle the new user creation
     }
-
     res.status(200).send('Webhook received successfully');
 });
 

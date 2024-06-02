@@ -6,17 +6,23 @@ payload='{"event":"user.created","data":{"id":"1","full_name":"Faizan","email":"
 # Generate the current Unix timestamp
 timestamp=$(date +%s)
 
+# Define the webhook shared token
+webhook_token='your_shared_webhook_token'
+
 # Define the shared secret
 shared_secret='your_shared_secret'
+
+
 
 # Generate the HMAC SHA-256 signature in hexadecimal format
 signature=$(echo -n "$payload$timestamp" | openssl dgst -sha256 -hmac "$shared_secret" | sed 's/^.* //')
 
 # Print the generated signature
 echo "Payload: $payload"
+echo "Webhook Token: $webhook_token"
 echo "Shared Secret: $shared_secret"
 echo "Generated timestamp: $timestamp"
 echo "Generated signature: $signature"
 
 # Send the payload with the signature and timestamp to the webhook
-curl -X POST -H "Content-Type: application/json" -H "X-Signature: $signature" -H "X-Timestamp: $timestamp" -d "$payload" "http://localhost:3000/webhook"
+curl -X POST -H "Content-Type: application/json" -H "x-signature: $signature" -H "x-webhook-token: $webhook_token" -H "x-timestamp: $timestamp" -d "$payload" "http://localhost:3000/webhook"
