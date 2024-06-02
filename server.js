@@ -1,12 +1,13 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const crypto = require('crypto');
+require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-const SECRET = 'your_shared_secret'; // ENTER YOUR SHARED SECRET HERE
-const MAX_TIME_DIFFERENCE = 60;
+const SECRET = process.env.SECRET || 'your_shared_secret'; // ENTER YOUR SHARED SECRET HERE
+const MAX_TIME_DIFFERENCE = +process.env.MAX_TIME_DIFFERENCE || 60;
 
 // Middleware to parse incoming JSON requests
 app.use(bodyParser.json());
