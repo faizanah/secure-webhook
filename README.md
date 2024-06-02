@@ -1,16 +1,18 @@
+Implementing Secure Webhooks using node.js
 <h1 align="center"Implementing Secure Webhooks using node.js</h1>
 
 
 <p align="center">
   <img src="./banner.png" alt="Implementing Secure Webhooks using node.js" width="1000" height="400" />
+</p>
+
+<hr>
+
+## ❯ Table of Contents
+
 
 This is a Node.js application to create a secure webhook server using Express. The server verifies incoming webhook requests by validating their signatures and timestamps. It provides a middleware function to verify the signature and timestamp of incoming webhook requests and an endpoint to receive webhook payloads.
 
-</p>
-
-
-
-## ❯ Table of Contents
 
 -   [❯ Up and Running](#-up-and-running)
     -   [Step 1: Clone this repository](#pre-requisites)
