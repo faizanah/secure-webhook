@@ -11,6 +11,15 @@
 
 <p>This is a Node.js application to create a secure webhook server using Express. The server verifies incoming webhook requests by validating their signatures and timestamps. It provides a middleware function to verify the signature and timestamp of incoming webhook requests and an endpoint to receive webhook payloads.</p>
 
+## ❯ Table of Contents
+
+-   [❯ Up and Running](#-up-and-running)
+    -   [Step 1: Clone this repository](#pre-requisites)
+    -   [Step 2: Install dependencies](#)
+    -   [Step 3: Set up environment variables](#)
+    -   [Step 4: Serve your App](#)
+-   [❯ Webhook Endpoint](#-webhook-endpoint)
+-   [❯ Testing](#-testing)
 
 ## ❯ Up and Running
 
