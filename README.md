@@ -18,6 +18,8 @@ This is a Node.js application to create a secure webhook server using Express. T
     -   [Step 4: Serve your app](#)
 -   [❯ Webhook Endpoint](#-webhook-endpoint)
 -   [❯ Testing](#-testing)
+-   [❯ Conclusion](#-conclusion)
+
 
 ## ❯ Up and Running
 
@@ -127,3 +129,9 @@ curl -X POST -H "Content-Type: application/json" -H "X-Signature: $signature" -H
 ```
 This script will generate the necessary payload, timestamp, and HMAC signature, then send the payload with the required headers to the specified webhook URL.
 
+
+## ❯ Conclusion
+
+Implementing secure webhooks is essential to protect your application from various security threats. By verifying the source, validating the payload, and handling events securely, you can ensure that your webhooks are robust and reliable.
+
+With these steps, you now have a basic implementation of secure webhooks using Node.js. Customise the validation and event handling to suit your application's requirements, and you'll be well on your way to secure and efficient webhook integration.
