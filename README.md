@@ -15,7 +15,7 @@ This is a Node.js application to create a secure webhook server using Express. T
     -   [Step 1: Clone this repository](#pre-requisites)
     -   [Step 2: Install dependencies](#)
     -   [Step 3: Set up environment variables](#)
-    -   [Step 4: Serve your App](#)
+    -   [Step 4: Serve your app](#)
 -   [❯ Webhook Endpoint](#-webhook-endpoint)
 -   [❯ Testing](#-testing)
 
@@ -57,7 +57,7 @@ SECRET=My Shared Secret
 PORT=3000
 MAX_TIME_DIFFERENCE=60
 ```
-#### Step 4: Serve your App
+#### Step 4: Serve your app
 Go to the project dir and start your app with this npm script.
 
 ```bash
@@ -68,7 +68,7 @@ Secure webhook server running on `http://localhost:3000/`.
 
 ## ❯ Webhook Endpoint
 
-### POST `/webhook`
+#### POST `/webhook`
 
 This endpoint is used to receive webhook payloads. It expects the following headers:
 
